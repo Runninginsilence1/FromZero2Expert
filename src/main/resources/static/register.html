@@ -7,12 +7,15 @@
 </head>
 <body>
 	<div class="box">
-		<form autocomplete="off" action="/users" method="post">
+		<form autocomplete="off" action="/FromZerotoExpert/users" method="post">
 			<h2>Sign up</h2>
 			<div class="inputBox">
-				<input type="text" name="username" required="required">
+				<input type="text" name="username" required="required" id="axios_test1">
 				<span>UserName</span>
 				<i></i>
+			</div>
+			<div class="links">
+				<a href="#" id="axios_test2"></a>
 			</div>
 			<div class="inputBox">
 				<input type="password" name="password" required="required">
@@ -27,4 +30,21 @@
 		</form>
 	</div>
 </body>
+
+<script src="js/axios-0.27.2.js"></script>
+<script>
+	// 该元素失焦时执行
+	// 应该显示2
+	document.getElementById("axios_test1").onblur = function () {
+		var username = this.value
+		axios.get("http://localhost:8080/FromZerotoExpert/users/axios?username=" + username).then(
+				function (resp) {
+					// 直接在后端里面控制显示什么内容
+					// 试试这里的innerText
+					document.getElementById("axios_test2").innerText = resp.data;
+					// alert(resp.text)
+				}
+		)
+	}
+</script>
 </html>

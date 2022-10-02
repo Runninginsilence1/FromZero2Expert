@@ -33,4 +33,13 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    /**
+     * 先考虑在业务层判断这个 异步提交吧
+     * @param username 前端传递来的用户名
+     * @return 查不到说明唯一，true
+     */
+    public boolean isUsernameUnique (String username) {
+        return userDao.selectByUsername(username) == null;
+    }
 }

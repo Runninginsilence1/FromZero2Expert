@@ -1,6 +1,10 @@
 spring:
   datasource:
+    # My MySQL version is 5.7, this is why I'm using this deprecated version Connector...
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/from_zeroto_expert
     username: root
     password: risk
+server:
+  servlet:
+    context-path: /FromZerotoExpert
